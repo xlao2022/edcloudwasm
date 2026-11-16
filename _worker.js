@@ -83,7 +83,7 @@ const initializeWasm = (env) => {
     wasmRes[13] = enableSniSniff ? 1 : 0;
     const {uuid, password, user, pass} = getEnv(env);
     const cleanUuid = uuid.replaceAll('-', '').match(/../g);
-    if (cleanUuid.length === 32) {
+    if (cleanUuid.length === 16) {
         wasmRes[0] = 1;
         const uuidBytes = new Uint8Array(16);
         for (let i = 0, c; i < 16; i++) {uuidBytes[i] = (((c = cleanUuid.charCodeAt(i * 2)) > 64 ? c + 9 : c) & 0xF) << 4 | (((c = cleanUuid.charCodeAt(i * 2 + 1)) > 64 ? c + 9 : c) & 0xF)}
